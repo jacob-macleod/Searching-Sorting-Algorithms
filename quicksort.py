@@ -55,25 +55,20 @@ quicksort
 """
 Partition
     set pivot and pivot value
-    swap righta dn pivot 
+    swap pivot and rightmost element
     set storeposition = left
 
-    of each element
-        if element < pivot value
-            swap selement and store position
-            increment store position
+    for each element
+        if element < pivotvalue
+            swap elementa nd store position
+            increment store_position
     
-    swap right and store position
-    return pivot
-
-quicksort
-    if left < right
-        p = parition
-        quicksort left and right
+    swap rigt and store position
+    returen store position
 """
 
 def partition(left, right, array) :
-    pivot = int((left+right) / 2)
+    pivot = int((left+right)/2)
     pivot_value = array[pivot]
 
     array[pivot] = array[right]
@@ -87,16 +82,15 @@ def partition(left, right, array) :
             array[i] = array[store_position]
             array[store_position] = temp
             store_position = store_position + 1
-    
-    # Swap rightmost and store position
+
+    # Swap right and store_position
     temp = array[right]
     array[right] = array[store_position]
     array[store_position] = temp
-
     return store_position
 
 def quicksort(left, right, array) :
-    if left<right:
+    if left < right:
         p = partition(left, right, array)
         quicksort(left, p-1, array)
         quicksort(p+1, right, array)

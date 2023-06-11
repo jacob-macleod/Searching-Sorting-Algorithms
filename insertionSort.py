@@ -26,18 +26,3 @@ for p = 1 to len (list)
     list[z] = hole
 """
 
-
-def insertion_sort(list) :
-    for p in range(0, len(list)) :
-        hole = list[p]
-        z = p
-
-        while z > 0 and list[z-1] < hole :
-            list[z] = list[z-1]
-            z = z - 1
-
-        list[z] = hole
-
-    return list
-
-print (insertion_sort(listToSort))

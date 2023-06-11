@@ -34,39 +34,36 @@ list_to_search = [1, 2, 4, 6, 8, 34, 56, 876, 9393]
         iteration = iteration + 1"""
 
 """
-Basic logic
-split array in two
-get midpoint
-
-if aray[midpoint] > search term, search left side, otherwise search right side
+Baisc logic
+split array = two
+search teh right sub tree by setting left or right to equal midpoint +- 1
+repeat till item found or iterations > len(list)
+1234 5 6 7
 """
 
-def binary_search(array, search_term) :
+def binary_search(array, searchTerm) :
     loop = True
+    i = 0
     left = 0
-    right = len(array)
-    iterations = 0
+    right = len(array) - 1
 
     while loop == True:
         midpoint = int((left+right)/2)
 
-        if array[midpoint] > search_term :
-            # Search left side
-            right = midpoint - 1
-        if array[midpoint] < search_term:
-            # Search right side
+        if array[midpoint] < searchTerm :
+            # Search right subtree
             left = midpoint + 1
-        if array[midpoint] == search_term:
+        elif array[midpoint] > searchTerm :
+            # Search left subtree
+            right = midpoint - 1
+        else :
+            print ("Item found at " + str(midpoint))
             loop = False
-            print ("Item found")
-        
-        if iterations > len(array) :
-            loop = False
+
+        i = i + 1
+
+        if i > len(array) :
             print ("Item not found")
-        
-        iterations = iterations + 1
+            loop = False 
 
-        
-
-
-binary_search(list_to_search, 8)
+binary_search(list_to_search, 10000)
