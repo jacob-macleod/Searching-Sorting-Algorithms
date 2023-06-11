@@ -17,25 +17,29 @@ def bubble_sort(list) :
     print (list)"""
 
 
-
-
-# Basic logic
-# Go through list linearly, starting at n=1
-# If the item is smaller than the previous one, swap them
-# Repeat while swapped = True, at start of each iteration swapped = false, swapped = true when swap happens
+"""
+Basic idea
+Do a while loop
+    swapped = false
+    for each element, if it and the revious one need to be swapped, swap them and swapped = true
+    if swapped = false, loop = false
+"""
 
 def bubble_sort(list) :
-    swapped = True
+    loop = True
 
-    while swapped == True:
+    while loop == True:
         swapped = False
 
-        for i in range(1, len(list)) :
-            if list[i] < list[i-1] :
+        for i in range (1, len(list)) :
+            if list[i] > list[i-1] :
                 temp = list[i]
                 list[i] = list[i-1]
                 list[i-1] = temp
                 swapped = True
+
+        if swapped == False :
+            loop = False
 
     return list
 

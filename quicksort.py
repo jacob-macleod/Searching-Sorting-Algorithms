@@ -42,7 +42,7 @@ Partition
             swap element and store position
             increment storeposition
     
-    swap pviot and right
+    swap right and store position
     return store position
 
 quicksort
@@ -51,8 +51,29 @@ quicksort
     quicksort right and left subtree
 """
 
-def partition (array, left, right) :
-    pivot = int((left+right)/2)
+
+"""
+Partition
+    set pivot and pivot value
+    swap righta dn pivot 
+    set storeposition = left
+
+    of each element
+        if element < pivot value
+            swap selement and store position
+            increment store position
+    
+    swap right and store position
+    return pivot
+
+quicksort
+    if left < right
+        p = parition
+        quicksort left and right
+"""
+
+def partition(left, right, array) :
+    pivot = int((left+right) / 2)
     pivot_value = array[pivot]
 
     array[pivot] = array[right]
@@ -67,18 +88,18 @@ def partition (array, left, right) :
             array[store_position] = temp
             store_position = store_position + 1
     
-    temp = array[store_position]
-    array[store_position] = array[right]
-    array[right] = temp
+    # Swap rightmost and store position
+    temp = array[right]
+    array[right] = array[store_position]
+    array[store_position] = temp
+
     return store_position
 
-def quicksort(array, left, right) :
-    if left < right :
-        p = partition(array, left, right)
-        quicksort(array, left, p-1)
-        quicksort(array, p+1, right)
+def quicksort(left, right, array) :
+    if left<right:
+        p = partition(left, right, array)
+        quicksort(left, p-1, array)
+        quicksort(p+1, right, array)
 
-listToSort = [1, 3, 2, 6, 34, 58, 2763, 6, 4, 7, 8, 3]
-quicksort(listToSort, 0, len(listToSort) - 1)
-
-print(listToSort)
+quicksort(0, len(listToSort)-1, listToSort)
+print (listToSort)
